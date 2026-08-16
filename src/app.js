@@ -50,7 +50,7 @@ async function loadPlaylistSource() {
   }
 
   try {
-    const response = await fetch("/playlist.json", { cache: "no-store" });
+    const response = await fetch(`${import.meta.env.BASE_URL}playlist.json`, { cache: "no-store" });
     if (!response.ok) throw new Error("Playlist snapshot is missing");
     const snapshot = await response.json();
     playlistId = snapshot.playlistId;
@@ -437,7 +437,7 @@ background.onload = () => {
   clearTimeout(revealTimer);
   setTimeout(() => document.body.classList.add("loaded"), 300);
 };
-background.src = "/art/roomies-hostel.webp";
+background.src = `${import.meta.env.BASE_URL}art/roomies-hostel.webp`;
 
 if (localStorage.getItem("roomies-main-light") === "off") setAmbientMode(true, false);
 $("#roomieCount").textContent = String(8 + Math.floor(Math.random() * 9));

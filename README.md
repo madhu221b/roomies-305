@@ -11,6 +11,15 @@ npm run dev
 
 Then open the local URL Vite prints.
 
+## Deploying to GitHub Pages
+
+Every push to `main` builds the site and deploys it via GitHub Actions (`.github/workflows/deploy.yml`). One-time setup, in the repo on GitHub:
+
+1. Go to **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **GitHub Actions**.
+
+After that, the site is published automatically at `https://<username>.github.io/<repo>/`. The build uses the playlist snapshot already committed at `public/playlist.json` (it does not re-run `yt-dlp` in CI); run `npm run sync:playlist` locally and commit the result whenever the playlist changes.
+
 ## Notes
 
 - The queue is generated from the public or unlisted YouTube/YouTube Music URL in `playlist.config.json`. `npm run dev` and `npm run build` automatically synchronize its current video IDs, order, titles, artists and thumbnails before starting. No song list is hardcoded in the application.
