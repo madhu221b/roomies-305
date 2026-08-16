@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#201637" />
+    <meta name="description" content="Roomies Radio — the girls' hostel after-hours playlist." />
+    <title>Roomies Radio — girls' hostel after-hours</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23ffd665'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='serif' font-size='31' font-weight='700' fill='%233f2048'%3ERR%3C/text%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,700;1,800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="loader-wipe" aria-hidden="true">
+      <div class="loader-mark"><span>RR</span><p>unlocking room 304</p></div>
+      <div class="loader-line"><i></i></div>
+    </div>
+    <main class="room" id="app">
+      <div class="room__art room__art--main" aria-hidden="true"></div>
+      <div class="room__art room__art--ambient" aria-hidden="true"></div>
+      <div class="room__wash" aria-hidden="true"></div>
+      <div class="grain" aria-hidden="true"></div>
+      <div class="light-glow light-glow--left" aria-hidden="true"></div>
+      <div class="light-glow light-glow--right" aria-hidden="true"></div>
+
+      <button class="wall-switch" id="lightSwitch" type="button" aria-label="Turn the main light off" aria-pressed="false">
+        <span class="switch-plate" aria-hidden="true">
+          <span class="switch-screw switch-screw--top"></span>
+          <span class="switch-rocker"><i></i></span>
+          <span class="switch-name">MAIN</span>
+          <span class="switch-screw switch-screw--bottom"></span>
+        </span>
+        <span class="switch-tooltip">main light</span>
+      </button>
+
+      <header class="topbar">
+        <button class="soft-pill live-pill" id="moodButton" type="button" aria-label="Shuffle the playlist">
+          <span class="live-dot"><span></span></span>
+          <span><strong id="roomieCount">11</strong> roomies awake</span>
+        </button>
+
+        <div class="floor-sign" aria-label="Room 304, lights out at never">
+          <span>ROOM 304</span>
+          <i></i>
+          <span>LIGHTS OUT: NEVER</span>
+        </div>
+
+        <button class="soft-pill queue-button" id="queueButton" type="button" aria-expanded="false" aria-controls="queuePanel">
+          <span>Queue</span>
+          <span class="queue-count" id="queueCount">…</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h9"/></svg>
+        </button>
+      </header>
+
+      <section class="hero" aria-labelledby="brandTitle">
+        <div class="eyebrow"><span></span> girls' hostel radio <span></span></div>
+        <h1 id="brandTitle"><span class="roomies-word">Roomies</span><span class="radio-word">RADIO</span></h1>
+        <p class="tagline">The good speakers. The bad decisions.<br />One very loud room.</p>
+        <div class="mood-row" aria-label="Playlist mood">
+          <span>#bollywoodfirst</span>
+          <span>#gettingready</span>
+          <span>#maincharacterpop</span>
+        </div>
+      </section>
+
+      <section class="player-wrap" aria-label="Music player">
+        <div class="now-label"><span></span> Now making noise</div>
+        <div class="player" id="player">
+          <div class="album-shell">
+            <div class="album-spin" id="albumSpin">
+              <img id="albumArt" src="" alt="" />
+            </div>
+            <div class="album-hole" aria-hidden="true"></div>
+          </div>
+
+          <div class="track-block">
+            <div class="track-heading">
+              <div class="track-copy">
+                <p class="track-title" id="trackTitle">Loading playlist…</p>
+                <p class="track-artist" id="trackArtist"></p>
+              </div>
+              <button class="heart-button" id="heartButton" type="button" aria-label="Save track" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.7-7.5 1.1-1.1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+              </button>
+            </div>
+
+            <div class="timeline-row">
+              <span id="currentTime">0:00</span>
+              <label class="timeline" aria-label="Seek through current track">
+                <input id="seekSlider" type="range" min="0" max="100" value="0" step="0.1" />
+                <span class="timeline-track"><span id="timelineFill"></span></span>
+              </label>
+              <span id="duration">0:30</span>
+            </div>
+          </div>
+
+          <div class="controls">
+            <button class="icon-button small" id="shuffleButton" type="button" aria-label="Shuffle" aria-pressed="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3h5v5M4 20l6.5-6.5M21 16v5h-5M4 4l16.5 16.5M15 8.5 20.5 3"/></svg>
+            </button>
+            <button class="icon-button" id="prevButton" type="button" aria-label="Previous track">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path class="fill" d="M6 5h2v14H6zm3 7 10 7V5z"/></svg>
+            </button>
+            <button class="play-button" id="playButton" type="button" aria-label="Play" aria-pressed="false">
+              <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7V5Z"/></svg>
+              <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM14 5h4v14h-4z"/></svg>
+              <span class="loader" aria-hidden="true"></span>
+            </button>
+            <button class="icon-button" id="nextButton" type="button" aria-label="Next track">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path class="fill" d="M16 5h2v14h-2zm-11 0 10 7-10 7z"/></svg>
+            </button>
+            <button class="icon-button small" id="volumeButton" type="button" aria-label="Mute">
+              <svg class="volume-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Zm4.5 3.5a5 5 0 0 1 0 7M18 6a8 8 0 0 1 0 12"/></svg>
+              <svg class="volume-off" viewBox="0 0 24 24" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4V5Zm5 5 5 5m0-5-5 5"/></svg>
+            </button>
+          </div>
+        </div>
+        <p class="preview-note">Full songs from your YouTube playlist · headphones optional</p>
+      </section>
+
+      <aside class="queue-panel" id="queuePanel" aria-label="Up next" aria-hidden="true">
+        <div class="queue-head">
+          <div>
+            <span class="queue-kicker">TONIGHT'S MIX</span>
+            <h2>Who has aux?</h2>
+          </div>
+          <button id="queueClose" type="button" aria-label="Close queue">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+          </button>
+        </div>
+        <div class="queue-list" id="queueList"></div>
+        <div class="queue-footer">
+          <span><i></i> no skips judged here</span>
+          <div>
+            <a id="playlistLink" href="https://music.youtube.com/playlist?list=PLQvp4hJtMToE" target="_blank" rel="noreferrer">YT Music ↗</a>
+            <button id="shuffleQueue" type="button">Shuffle all</button>
+          </div>
+        </div>
+      </aside>
+
+      <div class="queue-scrim" id="queueScrim" aria-hidden="true"></div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      <div id="youtubePlayerHost" aria-hidden="true"><div id="youtubePlayer"></div></div>
+    </main>
+
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>

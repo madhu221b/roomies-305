@@ -1,0 +1,17 @@
+{
+  "name": "roomies-radio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync:playlist": "node scripts/sync-playlist.mjs",
+    "predev": "npm run sync:playlist",
+    "dev": "vite --host 0.0.0.0",
+    "prebuild": "npm run sync:playlist",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "devDependencies": {
+    "vite": "^6.4.3"
+  }
+}
