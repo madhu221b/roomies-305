@@ -72,13 +72,10 @@ button { color: inherit; }
 .roomies-word { display: block; font-family: "Playfair Display", serif; font-style: italic; font-weight: 800; font-size: clamp(70px, 11vw, 150px); line-height: .92; letter-spacing: -.075em; color: #3f2048; text-shadow: 3px 4px 0 rgba(255,102,113,.78), 0 10px 30px rgba(93,44,44,.18); paint-order: stroke fill; -webkit-text-stroke: 1px rgba(63,32,72,.1); }
 .radio-word { display: block; font-family: "DM Mono", monospace; font-size: clamp(11px, 1.7vw, 21px); letter-spacing: .3em; color: var(--ink); background: var(--yellow); padding: .5em .4em .5em .65em; box-shadow: 4px 4px 0 var(--coral); transform: rotate(5deg) translateY(12%); text-shadow: none; }
 .tagline { margin: 13px 0 0; font-size: clamp(11px, 1.1vw, 14px); font-weight: 700; line-height: 1.55; letter-spacing: .01em; color: rgba(54,30,51,.84); }
-.mood-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; margin-top: 15px; }
-.mood-row span { padding: 5px 9px; border: 1px solid rgba(70,38,57,.12); background: rgba(255,244,217,.48); backdrop-filter: blur(8px); border-radius: 99px; font-family: "DM Mono"; font-size: 8px; font-weight: 500; letter-spacing: .05em; color: rgba(60,32,54,.68); }
-.roomies-word, .eyebrow, .tagline, .mood-row span, .floor-sign, .now-label, .preview-note, .soft-pill { transition: color .65s ease, background-color .65s ease, border-color .65s ease, text-shadow .65s ease; }
+.roomies-word, .eyebrow, .tagline, .floor-sign, .now-label, .preview-note, .soft-pill { transition: color .65s ease, background-color .65s ease, border-color .65s ease, text-shadow .65s ease; }
 .ambient-mode .roomies-word { color: var(--cream); text-shadow: 3px 4px 0 rgba(255,90,102,.75), 0 10px 34px rgba(5,3,16,.5); }
 .ambient-mode .eyebrow, .ambient-mode .tagline, .ambient-mode .floor-sign, .ambient-mode .now-label, .ambient-mode .preview-note { color: rgba(255,245,223,.84); text-shadow: 0 2px 12px rgba(0,0,0,.4); }
 .ambient-mode .floor-sign i { background: rgba(255,245,223,.42); }
-.ambient-mode .mood-row span { color: rgba(255,245,223,.7); border-color: rgba(255,255,255,.13); background: rgba(28,18,44,.32); }
 .ambient-mode .soft-pill { color: var(--cream); border-color: rgba(255,255,255,.15); background: rgba(31,20,49,.48); }
 
 .player-wrap { width: min(740px, calc(100% - 40px)); align-self: end; justify-self: center; margin-bottom: clamp(22px, 5vh, 48px); position: relative; z-index: 7; }
@@ -200,7 +197,6 @@ button { color: inherit; }
   .roomies-word { min-width: 0; font-size: clamp(60px, 19vw, 82px); }
   .radio-word { position: absolute; right: 4px; bottom: -5px; font-size: 7px; box-shadow: 3px 3px 0 var(--coral); }
   .tagline { font-size: 10px; }
-  .mood-row { display: none; }
   .player-wrap { width: calc(100vw - 24px); margin-bottom: max(12px, env(safe-area-inset-bottom)); }
   .now-label { margin-left: 15px; }
   .player { min-height: 142px; padding: 12px; grid-template-columns: 64px minmax(0,1fr); grid-template-rows: 64px auto; gap: 8px 13px; border-radius: 21px; }
@@ -219,7 +215,6 @@ button { color: inherit; }
   .topbar { padding-top: 15px; }
   .hero { transform: scale(.84); margin-top: -5vh; }
   .player-wrap { margin-bottom: 16px; }
-  .mood-row { margin-top: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
